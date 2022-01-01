@@ -10,7 +10,6 @@ public class Login implements ActionListener{
 
     JFrame frame = new JFrame("Login Page");
     JButton loginButton = new JButton("Login");
-    JButton resetButton = new JButton("Reset");
     JLabel usernameLabel = new JLabel("Username:");
     JLabel passLabel = new JLabel("Password:");
     JTextField usernameInput = new JTextField();
@@ -36,18 +35,12 @@ public class Login implements ActionListener{
         loginButton.setFocusable(false);
         loginButton.addActionListener(this);
 
-        resetButton.setBounds(225,200,100,25);
-        resetButton.setFocusable(false);
-        resetButton.addActionListener(this);
-
-
         frame.add(usernameLabel);
         frame.add(passLabel);
         frame.add(validLabel);
         frame.add(usernameInput);
         frame.add(passInput);
         frame.add(loginButton);
-        frame.add(resetButton);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(500,400);
@@ -57,11 +50,6 @@ public class Login implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource()==resetButton) {
-            usernameInput.setText("");
-            passInput.setText("");
-            validLabel.setText("");
-        }        
         if(e.getSource()==loginButton) {
             String username = usernameInput.getText();
             String password = String.valueOf(passInput.getPassword());
@@ -72,6 +60,7 @@ public class Login implements ActionListener{
                     WelcomePage welcomePage = new WelcomePage(username);
                 } else {
                     validLabel.setText("Wrong password. Please try again.");
+                    passInput.setText("");
                 }
             } else {
                 validLabel.setText("Username is incorrect. Please try again.");

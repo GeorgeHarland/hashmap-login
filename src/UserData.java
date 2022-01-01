@@ -8,7 +8,7 @@ public class UserData {
         logininfo.put("Cobalt","PASS");
     }
 
-    protected HashMap getLoginInfo(){
+    protected HashMap<String,String> getLoginInfo(){
         return logininfo;
     }
 }
